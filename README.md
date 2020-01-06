@@ -1,6 +1,8 @@
-﻿3. Semester, CA3
+﻿3. Semester, Exam
 
-React app template project.
+React SPA app project.
+
+Deployment: TestExamExerciseType2Front.surge.sh
 
 Instructions
 ==================
