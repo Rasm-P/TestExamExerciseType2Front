@@ -2,9 +2,9 @@ import React from "react";
 
 const StartPage = () => {
   return (
-    <div>
-      <h1>Quick Start Project</h1>
-      <h4>Template Instructions</h4>
+    <div className="col-sm-offset-3 col-sm-9">
+      <h1>Home</h1>
+      <h4>Instructions</h4>
       <p>
         Preconditions: In order to use this code, you should have a local
         developer setup + a "matching" droplet on Digital Ocean as described in

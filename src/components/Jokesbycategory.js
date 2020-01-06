@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { catchHttpErrors } from "../utils";
 import uuid from "uuid/v1";
-import {
-  Prompt
-} from "react-router-dom";
+import { Prompt } from "react-router-dom";
 
 const Jokesbycategory = ({ loggedIn, allCategories, CategoryFacade }) => {
   const [jokes, setJokes] = useState("");
 
   return (
-    <div>
+    <div className="col-sm-offset-3 col-sm-9">
       <h1>Joke By Category</h1>
       <p>Select one of the categories and get a joke!</p>
       <p>
@@ -22,7 +20,7 @@ const Jokesbycategory = ({ loggedIn, allCategories, CategoryFacade }) => {
         allCategories={allCategories}
         CategoryFacade={CategoryFacade}
       />
-      {!jokes == "" ? <Jokes jokes={jokes} /> : null}
+      {!jokes === "" ? <Jokes jokes={jokes} /> : null}
     </div>
   );
 };
@@ -32,7 +30,6 @@ const Categories = ({ setJokes, loggedIn, allCategories, CategoryFacade }) => {
   const [categories, setCategories] = useState("");
 
   function handleSubmit(event) {
-    console.log("1." + event.target.value);
     event.preventDefault();
     if (loggedIn === true) {
       CategoryFacade.FetchJokesByCategoryV2(categories.value)
@@ -82,7 +79,6 @@ const Categories = ({ setJokes, loggedIn, allCategories, CategoryFacade }) => {
 };
 
 const Jokes = ({ jokes }) => {
-  console.log("3." + jokes);
   return (
     <div>
       <div>

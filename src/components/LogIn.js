@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {Redirect} from 'react-router-dom';
-import { catchHttpErrors} from "../utils";
+import { Redirect } from "react-router-dom";
+import { catchHttpErrors } from "../utils";
 
 const LogIn = ({ apiFacade, loggedIn, setLoggedIn }) => {
   const login = (user, pass) => {
@@ -16,12 +16,8 @@ const LogIn = ({ apiFacade, loggedIn, setLoggedIn }) => {
       });
   };
   return (
-    <div>
-      {!loggedIn ? (
-        <LogInForm login={login} />
-      ) : (
-        <Redirect  to="/logout" />
-      )}
+    <div className="col-sm-offset-3 col-sm-9">
+      {!loggedIn ? <LogInForm login={login} /> : <Redirect to="/logout" />}
     </div>
   );
 };

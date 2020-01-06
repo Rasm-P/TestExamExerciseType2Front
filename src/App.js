@@ -16,6 +16,7 @@ const NoMatch = () => {
 function App({ loginFacade, CategoryFacade }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [allCategories, setAllCategories] = useState([]);
+  const [update, setUpdate] = useState(false);
 
   // check token regularly
   useEffect(() => {
@@ -27,21 +28,19 @@ function App({ loginFacade, CategoryFacade }) {
   }, []);
 
   useEffect(() => {
-    CategoryFacade
-      .FetchAllCategories()
+    CategoryFacade.FetchAllCategories()
       .then(data => setAllCategories(data))
       .catch(catchHttpErrors);
-  }, []);
+    setUpdate(false);
+  }, [update]);
 
   return (
     <Router>
-      <Header loginFacade={loginFacade} loggedIn={loggedIn}/>
+      <Header loginFacade={loginFacade} loggedIn={loggedIn} />
       <Switch>
-
         <Route exact path="/">
           <StartPage />
         </Route>
-
         <Route path="/login">
           <LogIn
             apiFacade={loginFacade}
@@ -49,35 +48,31 @@ function App({ loginFacade, CategoryFacade }) {
             setLoggedIn={setLoggedIn}
           />
         </Route>
-
         <Route path="/logout">
-          <Logout 
-          apiFacade={loginFacade}
-          loggedIn={loggedIn}
-          setLoggedIn={setLoggedIn}
+          <Logout
+            apiFacade={loginFacade}
+            loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn}
           />
         </Route>
-
         <Route path="/jokesbycategory">
-          <Jokesbycategory 
+          <Jokesbycategory
             loggedIn={loggedIn}
             allCategories={allCategories}
             CategoryFacade={CategoryFacade}
-            />
-        </Route>
-
-        <Route path="/adminpage">
-          <Adminpage 
-          loggedIn={loggedIn}
-          allCategories={allCategories}
-          CategoryFacade={CategoryFacade}
           />
         </Route>
-
+        <Route path="/adminpage">
+          <Adminpage
+            loggedIn={loggedIn}
+            allCategories={allCategories}
+            CategoryFacade={CategoryFacade}
+            setUpdate={setUpdate}
+          />
+        </Route>
         <Route>
           <NoMatch />
         </Route>
-
       </Switch>
     </Router>
   );
