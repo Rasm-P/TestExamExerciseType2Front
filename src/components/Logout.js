@@ -26,8 +26,8 @@ const LoggedIn = ({ apiFacade, logout }) => {
   return (
     <div>
       <h2>You are logged in as:</h2>
-      <h3>Role: {role}</h3>
-      <h3>Username: {username}</h3>
+      <h4>Role: {role}</h4>
+      <h4>Username: {username}</h4>
       <button onClick={logout} className="btn btn-primary">
         Logout
       </button>

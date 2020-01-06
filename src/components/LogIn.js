@@ -62,6 +62,7 @@ const LogInForm = ({ login }) => {
               className="form-control"
               placeholder="Password"
               id="password"
+              type="password"
             />
           </div>
         </div>

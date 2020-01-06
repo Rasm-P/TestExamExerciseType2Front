@@ -20,7 +20,7 @@ const Jokesbycategory = ({ loggedIn, allCategories, CategoryFacade }) => {
         allCategories={allCategories}
         CategoryFacade={CategoryFacade}
       />
-      {!jokes === "" ? <Jokes jokes={jokes} /> : null}
+      {!jokes == "" ? <Jokes jokes={jokes} /> : null}
     </div>
   );
 };
@@ -92,10 +92,10 @@ const Jokes = ({ jokes }) => {
           </thead>
           <tbody>
             {jokes.jokes.map(j => (
-              <tr>
-                <td key={uuid()}>{j.category}</td>
-                <td key={uuid()}>{j.joke}</td>
-                <td key={uuid()}>{jokes.reference}</td>
+              <tr key={uuid()}>
+                <td>{j.category}</td>
+                <td>{j.joke}</td>
+                <td>{jokes.reference}</td>
               </tr>
             ))}
           </tbody>

@@ -3,8 +3,11 @@ import loginFacade from "./Facade/loginFacade";
 export function catchHttpErrors(err) {
   if (err.status) {
     err.fullError.then(e => {
-      console.log(e.detail);
+      console.log(e.message);
       alert(e.message);
+      if (e.message === "Token not valid (timed out?)") {
+        loginFacade.logout();
+      }
     });
   } else {
     console.log("Network error");
@@ -12,7 +15,6 @@ export function catchHttpErrors(err) {
 }
 
 export function handleHttpErrors(res) {
-  console.log(res);
   if (!res.ok) {
     return Promise.reject({ status: res.status, fullError: res.json() });
   } else if (res.status !== 204) {
