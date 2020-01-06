@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from "react";
-import utils, { catchHttpErrors } from "../utils";
+import React, { useState } from "react";
+import { catchHttpErrors } from "../utils";
 import uuid from "uuid/v1";
 import {
-  Prompt,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams,
-  Redirect
+  Prompt
 } from "react-router-dom";
 
 const Jokesbycategory = ({ loggedIn, allCategories, CategoryFacade }) => {
@@ -53,8 +48,6 @@ const Categories = ({ setJokes, loggedIn, allCategories, CategoryFacade }) => {
   }
 
   const handleChange = event => {
-    console.log("1." + event.target.value);
-    console.log("2." + categories.value);
     const target = event.target;
     const value = target.value;
     setCategories({ ...categories, value });

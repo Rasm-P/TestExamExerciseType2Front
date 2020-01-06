@@ -21,7 +21,7 @@ const CategoryFacade = (() => {
 
   function FetchCategoryCount(category) {
     const options = makeOptions("GET", true);
-    const us = fetch(configuration.URL + "/api​/categoryCount/" + category, options).then(
+    const us = fetch(configuration.URL + "/api/categoryCount/" + category, options).then(
       handleHttpErrors
     );
     return us;
@@ -37,7 +37,7 @@ const CategoryFacade = (() => {
 
   function AddCategory(category) {
       const options = makeOptions("POST", true, category);
-      return fetch(configuration.URL + "/api​/newCategory​/", options).then(handleHttpErrors);
+      return fetch(configuration.URL + "/api/newCategory/", options).then(handleHttpErrors);
     
   }
 

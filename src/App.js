@@ -67,7 +67,11 @@ function App({ loginFacade, CategoryFacade }) {
         </Route>
 
         <Route path="/adminpage">
-          <Adminpage />
+          <Adminpage 
+          loggedIn={loggedIn}
+          allCategories={allCategories}
+          CategoryFacade={CategoryFacade}
+          />
         </Route>
 
         <Route>
