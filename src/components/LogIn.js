@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { catchHttpErrors, makeOptions } from "../utils";
-import configuration from "../settings";
-import { handleHttpErrors } from "../utils";
+import React, { useState } from "react";
+import {Redirect} from 'react-router-dom';
+import { catchHttpErrors} from "../utils";
 
 const LogIn = ({ apiFacade, loggedIn, setLoggedIn }) => {
-  const logout = () => {
-    apiFacade.logout();
-    setLoggedIn(false);
-  };
   const login = (user, pass) => {
     apiFacade
       .login(user, pass)
@@ -25,7 +20,7 @@ const LogIn = ({ apiFacade, loggedIn, setLoggedIn }) => {
       {!loggedIn ? (
         <LogInForm login={login} />
       ) : (
-        <LoggedIn apiFacade={apiFacade} logout={logout} />
+        <Redirect  to="/logout" />
       )}
     </div>
   );
@@ -80,27 +75,6 @@ const LogInForm = ({ login }) => {
           </div>
         </div>
       </form>
-    </div>
-  );
-};
-
-const LoggedIn = ({ apiFacade, logout }) => {
-  const options = makeOptions("GET", true);
-  const [data, setData] = useState("Fetching");
-  const user = fetch(
-    configuration.URL + "/api/starwars/" + apiFacade.tokenDecoder().roles,
-    options
-  )
-    .then(handleHttpErrors)
-    .then(data => {
-      setData(data.msg);
-    });
-
-  return (
-    <div>
-      <h2>Data Received from server</h2>
-      <h3>{data}</h3>
-      <button onClick={logout}>Logout</button>
     </div>
   );
 };

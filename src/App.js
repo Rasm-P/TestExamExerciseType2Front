@@ -51,7 +51,11 @@ function App({ loginFacade, CategoryFacade }) {
         </Route>
 
         <Route path="/logout">
-          <Logout />
+          <Logout 
+          apiFacade={loginFacade}
+          loggedIn={loggedIn}
+          setLoggedIn={setLoggedIn}
+          />
         </Route>
 
         <Route path="/jokesbycategory">
